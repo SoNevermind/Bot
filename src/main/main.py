@@ -16,7 +16,7 @@ def send_welcome(message):
 def send_text(message):
     if message.text == 'Привет':
         bot.reply_to(message, 'Привет')
-    elif message.text == 'Пока':
+    elif message.text == 'Пока  ':
         bot.reply_to(message, 'Прощай')
 
 
