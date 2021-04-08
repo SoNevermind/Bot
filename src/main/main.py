@@ -18,5 +18,7 @@ def get_text_messages(message):
     else:
         bot.send_message(message.from_user.id, 'Извини, но это я не понимаю')
 
+@bot.polling()
+
 
 bot.polling(non_stop=True, intarval=0)
