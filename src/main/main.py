@@ -14,10 +14,13 @@ def send_welcome(message):
 
 @bot.message_handler(content_types=['text'])
 def send_text(message):
-    if message.text == 'Привет':
-        bot.reply_to(message, 'Привет')
-    elif message.text == 'Пока  ':
-        bot.reply_to(message, 'Прощай')
+    if message.text == "Привет":
+        bot.send_message(message.from_user.id,
+                         "Привет!")
+    elif message.text == "/help":
+        bot.send_message(message.from_user.id, "Напиши Привет")
+    else:
+        bot.send_message(message.from_user.id, "Я тебя не понимаю. Напиши /help.")
 
 
 bot.polling(none_stop=True, interval=0)
