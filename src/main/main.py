@@ -32,4 +32,15 @@ def echo(update):
         update.message.reply_text('Вполне возможно, кто ж знает?')
 
 
+updater = Updater('1756217731:AAFJZYYU9GrQezzgSrHCHOdZ1hvW0Cg5Zoo')
+
+dp = updater.dispatcher
+
+reply_keyboard = [['/hello', '/'],
+                  ]
+
+markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
+
+dp.add_handler(CommandHandler('hello', hello))
+
 bot.polling(none_stop=True, interval=0)
