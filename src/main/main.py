@@ -1,5 +1,4 @@
 import telebot
-from telebot import types
 
 bot = telebot.TeleBot('1756217731:AAFJZYYU9GrQezzgSrHCHOdZ1hvW0Cg5Zoo')
 
@@ -11,7 +10,7 @@ def send_welcome(message):
                  f'прибудет с тобой сила!')
 
 
-@bot.message_hendler(content_types=['text'])
+@bot.message_handler(content_types=['text'])
 def get_text_messages(message):
     if message.text.lower() == 'привет':
         bot.send_message(message.from_user.id, 'Привет!')
@@ -21,4 +20,4 @@ def get_text_messages(message):
 @bot.polling()
 
 
-bot.polling(non_stop=True, intarval=0)
+bot.polling()
