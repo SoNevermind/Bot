@@ -42,5 +42,9 @@ reply_keyboard = [['/hello', '/'],
 markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
 
 dp.add_handler(CommandHandler('hello', hello))
+text_handler = MessageHandler(Filters.text, echo)
+dp.add_handler(text_handler)
 
-bot.polling(none_stop=True, interval=0)
+updater.start_polling()
+
+updater.idle()
