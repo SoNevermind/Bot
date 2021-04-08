@@ -14,7 +14,5 @@ def send_welcome(message):
 def send_text(message):
     bot.send_message(message.chat.id, 'Привет, вот что я могу!')
 
-@bot.message_handler(commands=['Привет'])
-def send_text():
-    
+
 bot.polling(none_stop=True, interval=0)
