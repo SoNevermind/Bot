@@ -10,9 +10,8 @@ def send_welcome(message):
                  f'прибудет с тобой сила!')
 
 
-@bot.message_handler(commands=['Привет'])
-def send_text(message):
-    bot.send_message(message.chat.id, 'Привет, вот что я могу!')
+keyboard1 = telebot.types.RepleyKeyboardMarkup()
+keyboard1.row('Привет', 'Пока')
 
 
 bot.polling(none_stop=True, interval=0)
