@@ -1,5 +1,4 @@
 import telebot
-from telebot import types
 
 bot = telebot.TeleBot('1756217731:AAFJZYYU9GrQezzgSrHCHOdZ1hvW0Cg5Zoo')
 
@@ -19,4 +18,4 @@ def get_text_messages(message):
         bot.send_message(message.from_user.id, 'Извини, но это я не понимаю')
 
 
-bot.polling(non_stop=True, intarval=0)
+bot.polling()
