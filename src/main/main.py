@@ -12,9 +12,9 @@ def send_welcome(message):
 
 @bot.message_handler(content_types=['text'])
 def send_text(message):
-    if message.text.lower() == 'привет':
+    if message.text == 'Привет':
         bot.send_message(message.chat.id, 'Привет')
-    elif message.text.lower() == 'пока':
+    elif message.text == 'Пока':
         bot.send_message(message.chat.id, 'Прощай')
 
 
