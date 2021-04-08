@@ -1,8 +1,6 @@
 import telebot
 
 bot = telebot.TeleBot('1756217731:AAFJZYYU9GrQezzgSrHCHOdZ1hvW0Cg5Zoo')
-keyboard1 = telebot.types.ReplyKeyboardMarkup(True, True)
-keyboard1.row('Привет', 'Пока')
 
 
 @bot.message_handler(commands=['start'])
@@ -21,6 +19,17 @@ def send_text(message):
         bot.send_message(message.from_user.id, "Напиши Привет")
     else:
         bot.send_message(message.from_user.id, "Я тебя не понимаю. Напиши /help.")
+
+
+def hello(update):
+    update.message.reply_text('Привет!')
+
+
+def echo(update):
+    if update.message.text[-1] == '?':
+        update.message.reply_text('Конечно можно спросить! Только я культурно промолчу...')
+    else:
+        update.message.reply_text('Вполне возможно, кто ж знает?')
 
 
 bot.polling(none_stop=True, interval=0)
