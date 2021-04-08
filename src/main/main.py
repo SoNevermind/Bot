@@ -10,8 +10,16 @@ def send_welcome(message):
                  f'прибудет с тобой сила!')
 
 
-keyboard1 = telebot.types.RepleyKeyboardMarkup()
+keyboard1 = telebot.types.RepleyKeyboardMarkup(True, True)
 keyboard1.row('Привет', 'Пока')
+
+
+@bot.message_handler(content_types=['text'])
+def send_text(message):
+    if message.text.lower() == 'привет':
+        bot.send_message(message.chat.id, 'Привет')
+    elif message.text.lower() == 'пока':
+        bot.send_message(message.chat.id, 'Прощай')
 
 
 bot.polling(none_stop=True, interval=0)
