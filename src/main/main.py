@@ -1,7 +1,11 @@
 import telebot
-from aiogram.types import ReplyKeyboardRemove, \
-    ReplyKeyboardMarkup, KeyboardButton, \
-    InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram import Bot, types
+from aiogram.utils import executor
+from aiogram.utils.markdown import text
+from aiogram.dispatcher import Dispatcher
+
+from config import TOKEN
+import button as kb
 
 bot = telebot.TeleBot('1756217731:AAFJZYYU9GrQezzgSrHCHOdZ1hvW0Cg5Zoo')
 
@@ -13,9 +17,6 @@ def send_welcome(message):
                  f'прибудет с тобой сила!')
 
 
-button_hi = KeyboardButton('Привет! 👋')
-
-
 @bot.message_handler(content_types=['text'])
 def send_text(message):
     if message.text == "Привет":
@@ -25,6 +26,12 @@ def send_text(message):
         bot.send_message(message.from_user.id, "Напиши Привет")
     else:
         bot.send_message(message.from_user.id, "Я тебя не понимаю. Напиши /help.")
+
+
+@dp.callback_query_handler(func=lambda c: c.data == 'button1')
+async def process_callback_button1(callback_query: types.CallbackQuery):
+    await bot.answer_callback_query(callback_query.id)
+    await bot.send_message(callback_query.from_user.id, 'Нажата первая кнопка!')
 
 
 bot.polling(none_stop=True, interval=0)
