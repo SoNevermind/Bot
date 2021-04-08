@@ -12,9 +12,11 @@ def send_welcome(message):
 
 @bot.message_handler(content_types=['text'])
 def send_text(message):
-    if message.text == "Привет":
+    if message.text == "Привет" or "привет":
         bot.send_message(message.from_user.id,
                          "Привет!")
+        bot.send_message(message.from_user.id,
+                         "Вот что я могу:")
     elif message.text == "/help":
         bot.send_message(message.from_user.id, "Напиши Привет")
     else:
